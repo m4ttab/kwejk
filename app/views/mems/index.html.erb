@@ -1,0 +1,16 @@
+<%- model_class = Mem -%>
+<div class="page-header">
+  
+    <% @mems.each do |mem| %>
+    <center>
+   <h3><%= mem.name %></h3>
+   <%= link_to image_tag(mem.image.url(:medium)),mem_path(mem) %>
+   </center>
+   
+<% end %>
+</div>   
+  
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_mem_path,
+            :class => 'btn btn-primary' %>
