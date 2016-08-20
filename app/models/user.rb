@@ -6,6 +6,7 @@ class User < ApplicationRecord
    has_many :mems
 
 def to_s
+	
 	"#{email}"
 end
 end

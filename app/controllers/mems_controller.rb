@@ -1,10 +1,11 @@
 class MemsController < ApplicationController
   before_action :set_mem, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index,:show, :inactive]
+  before_action :check_user, only: [:edit, :destroy, :update]
   # GET /mems
   # GET /mems.json
   def index
-    @mems = Mem.active
+    @mems = Mem.active.order(:created_at)
   end
 
   def my
@@ -13,7 +14,7 @@ class MemsController < ApplicationController
   end
 
   def inactive
-    @mems = Mem.inactive
+    @mems = Mem.inactive.order(:created_at)
     render :index
   end
 
@@ -75,6 +76,15 @@ class MemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_mem
       @mem = Mem.find(params[:id])
+    end
+
+    def check_user
+      mem = Mem.find(params[:id])
+      if current_user.id == mem.user.id
+        true
+      else
+        redirect_to mem_path(mem)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
