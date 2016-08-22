@@ -5,16 +5,16 @@ class MemsController < ApplicationController
   # GET /mems
   # GET /mems.json
   def index
-    @mems = Mem.active.order(:created_at)
+    @mems = Mem.active.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def my
-    @mems = current_user.mems
+    @mems = current_user.mems.order.(created_at: :desc).page(params[:page]).per(10)
     render :index
   end
 
   def inactive
-    @mems = Mem.inactive.order(:created_at)
+    @mems = Mem.inactive.order(created_at: :desc).page(params[:page]).per(3)
     render :index
   end
 
