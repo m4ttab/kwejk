@@ -1,5 +1,5 @@
 
-KWEJK is an application where you can create mems, add comments and login with facebook
+KWEJK is an application where you can create mems, add comments and use facebook to log in.
 
 
 Gems I've been using:
