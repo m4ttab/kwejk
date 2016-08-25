@@ -9,7 +9,7 @@ class MemsController < ApplicationController
   end
 
   def my
-    @mems = current_user.mems.order.(created_at: :desc).page(params[:page]).per(10)
+    @mems = current_user.mems.page(params[:page]).per(10)
     render :index
   end
 
@@ -21,6 +21,8 @@ class MemsController < ApplicationController
   # GET /mems/1
   # GET /mems/1.json
   def show
+    @comment = Comment.new
+    @comment.mem_id = @mem_id
   end
 
   # GET /mems/new

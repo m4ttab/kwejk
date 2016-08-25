@@ -8,11 +8,16 @@
   <dd><%= @mem.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @mem.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @mem.user.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
   <dd><%= image_tag @mem.image.url(:medium) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @mem.user_id %></dd>
+
 </dl>
+
+<%= render partial: 'comments/form' %>
+<h4>Comments:</h4>
+<%= render partial: 'mems/comment', collection: @mem.comments %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               mems_path, :class => 'btn btn-default'  %>

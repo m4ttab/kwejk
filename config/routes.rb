@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   resources :mems do
+    resources :comments
   	collection do
   		get 'my'
   		get 'inactive'
