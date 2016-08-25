@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   		get 'my'
   		get 'inactive'
   end
+  resources :tags
 end
+
   get 'home/index'
   root 'mems#index'
 

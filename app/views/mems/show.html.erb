@@ -14,6 +14,12 @@
   <dd><%= image_tag @mem.image.url(:medium) %></dd>
 
 </dl>
+<p> 
+Tags:
+<% @mem.tags.each do |tag| %>
+<%= link_to tag.name, mem_tag_path(tag) %>
+<% end %>
+</p>
 
 <%= render partial: 'comments/form' %>
 <h4>Comments:</h4>

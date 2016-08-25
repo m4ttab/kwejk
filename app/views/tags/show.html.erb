@@ -1,0 +1,7 @@
+<h5>Mems Tagged with <%= @tag.name%> </h5>
+
+<ul>
+<% @tag.mems.each do |mem| %>
+<li><%= link_to mem.name, mem_path(mem) %></li>
+<% end %>
+</ul>
